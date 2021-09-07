@@ -21,8 +21,8 @@ class FoodStoreView(APIView):
 
 class FoodStoreEditView(APIView):
     def get(self, request, pk, format=None):
-        obj = FoodStore.objects.all()
-        serializer = FoodStoreSerializer(obj, many=True)
+        obj = FoodStore.objects.get(id=pk)
+        serializer = FoodStoreSerializer(obj)
         return Response(serializer.data, status.HTTP_200_OK)
 
     def put(self, request, pk, format=None):
@@ -55,8 +55,8 @@ class ItemView(APIView):
 
 class ItemEditView(APIView):
     def get(self, request, pk, format=None):
-        obj = Item.objects.all()
-        serializer = ItemSerializer(obj, many=True)
+        obj = Item.objects.get(id=pk)
+        serializer = ItemSerializer(obj)
         return Response(serializer.data, status.HTTP_200_OK)
 
     def put(self, request, pk, format=None):
